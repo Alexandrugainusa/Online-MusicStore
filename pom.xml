@@ -29,6 +29,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -50,6 +54,20 @@
 
     <build>
         <plugins>
+            <plugin>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-maven-plugin</artifactId>
+            <version>6.4.1</version>
+            <configuration>
+                <defaultSchema>onlinemusicstore</defaultSchema>
+                <schemas>
+                    <schema>onlinemusicstore</schema>
+                </schemas>
+                <url>jdbc:mysql://localhost:3306?serverTimezone=UTC</url>
+                <user>root</user>
+                <password>root</password>
+            </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
